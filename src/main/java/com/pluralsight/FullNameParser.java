@@ -20,7 +20,10 @@ public class FullNameParser {
 
         String[] parts = input.split("\\s+");
 
+        String firstName;
+        String middleName;
+        String lastName;
 
-        }
+
     }
 }
