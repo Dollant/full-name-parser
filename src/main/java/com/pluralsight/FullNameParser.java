@@ -44,5 +44,11 @@ public class FullNameParser {
             keyboard.close();
             return;
         }
+
+        System.out.println("First name: "  + firstName);
+        System.out.println("Middle name: " + middleName);
+        System.out.println("Last name: "   + lastName);
+
+        keyboard.close();
     }
 }
