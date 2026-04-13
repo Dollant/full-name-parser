@@ -51,4 +51,9 @@ public class FullNameParser {
 
         keyboard.close();
     }
+
+    public static String normalize(String text) {
+        text = text.toLowerCase();
+        return text.substring(0,1).toUpperCase() + text.substring(1);
+    }
 }
