@@ -1,6 +1,5 @@
 package com.pluralsight;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class FullNameParser {
@@ -9,16 +8,34 @@ public class FullNameParser {
 
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.print("Please enter your name: ");
-        String input = keyboard.nextLine()  .trim();
+        String input;
+        String[] parts;
 
-        if (input.isEmpty()) {
-            System.out.println("No name was entered. Please restart. ^_^");
-            keyboard.close();
-            return;
+
+        while (true) {
+
+            System.out.print("Please enter your name: ");
+            input = keyboard.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("No name was entered. Please try again. ^_^\n");
+                continue;
+            }
+
+            parts = input.split("\\s+");
+
+            if (parts.length < 2) {
+                System.out.println(
+                        "Only one name entered. T_T\nPlease enter either 'first last' or 'first middle last'.\n");
+            }
+            else if (parts.length > 3) {
+                System.out.println(
+                        "Too many names entered. T.T\nPlease enter either 'first last' or 'first middle last'.\n");
+            }
+            else {
+                break;
+            }
         }
-
-        String[] parts = input.split("\\s+");
 
         String firstName;
         String middleName;
@@ -26,23 +43,13 @@ public class FullNameParser {
 
         if (parts.length == 2) {
             firstName  = normalize(parts[0]);
-            middleName = ("none");
+            middleName = "none";
             lastName   = normalize(parts[1]);
         }
-        else if (parts.length == 3) {
+        else { // parts.length == 3
             firstName  = normalize(parts[0]);
             middleName = normalize(parts[1]);
             lastName   = normalize(parts[2]);
-        }
-        else if (parts.length > 3) {
-            System.out.println("Too many names entered. T.T\nPlease enter either 'first last' or 'first middle last'.");
-            keyboard.close();
-            return;
-        }
-        else {
-            System.out.println("Only one name entered. T_T\nPlease enter either 'first last' or 'first middle last'.");
-            keyboard.close();
-            return;
         }
 
         System.out.println("First name: "  + firstName);
@@ -54,6 +61,6 @@ public class FullNameParser {
 
     public static String normalize(String text) {
         text = text.toLowerCase();
-        return text.substring(0,1).toUpperCase() + text.substring(1);
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 }
