@@ -29,5 +29,20 @@ public class FullNameParser {
             middleName = ("none");
             lastName   = normalize(parts[1]);
         }
+        else if (parts.length == 3) {
+            firstName  = normalize(parts[0]);
+            middleName = normalize(parts[1]);
+            lastName   = normalize(parts[2]);
+        }
+        else if (parts.length > 3) {
+            System.out.println("Too many names entered. T.T\nPlease enter either 'first last' or 'first middle last'.");
+            keyboard.close();
+            return;
+        }
+        else {
+            System.out.println("Only one name entered. T_T\nPlease enter either 'first last' or 'first middle last'.");
+            keyboard.close();
+            return;
+        }
     }
 }
