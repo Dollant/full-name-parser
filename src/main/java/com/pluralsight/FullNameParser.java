@@ -17,5 +17,10 @@ public class FullNameParser {
             keyboard.close();
             return;
         }
+
+        String[] parts = input.split("\\s+");
+
+
+        }
     }
 }
