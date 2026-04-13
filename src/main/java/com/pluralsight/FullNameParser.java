@@ -24,6 +24,10 @@ public class FullNameParser {
         String middleName;
         String lastName;
 
-
+        if (parts.length == 2) {
+            firstName  = normalize(parts[0]);
+            middleName = ("none");
+            lastName   = normalize(parts[1]);
+        }
     }
 }
